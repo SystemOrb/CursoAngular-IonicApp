@@ -1,0 +1,55 @@
+<ion-content>
+  <ion-header>
+    <ion-navbar color="primary">
+      <ion-title> {{ label | labelPipe }} </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-list style="margin-top:80px">
+
+    <ion-item>
+      <ion-label floating>Introduce el nombre de la lista</ion-label>
+      <ion-input [(ngModel)]="label" type="text"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Introduce el articulo</ion-label>
+      <ion-input [(ngModel)]="nombreItem" type="text"></ion-input>
+      <button (click)="addList(nombreItem)"
+              (keyup.enter)="addList(nombreItem)"
+       ion-button outline item-right color="primary">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-card>
+    <ion-list>
+
+  <ion-item *ngFor="let itemList of item;let flag = index">
+      <button ion-item>
+      <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"></ion-icon>
+      {{ itemList }}
+    </button>
+     <button (click)="removeItem(flag)"  ion-button outline item-right color="danger" >
+      <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+     </button>
+  </ion-item>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-footer>
+  <ion-toolbar>
+    <button (click)="saveList()"  ion-button full>Crear lista</button>
+  </ion-toolbar>
+</ion-footer>
+
+
+</ion-content>
